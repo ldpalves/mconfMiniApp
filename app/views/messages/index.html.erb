@@ -1,0 +1,23 @@
+
+ <%= form_with scope: :message, url: messages_path, local: true do |form|%>
+    <p>
+        <%= form.label :text %><br>
+        <%= form.text_area :text, :oninput => 'keyHandler()' %>
+    </p> 
+    <p>
+        <%= form.submit %>
+    </p>
+<% end %>
+<table>
+  <tr>
+    <th>Text</th>
+    <th></th>
+  </tr>
+ 
+  <% @messages.each do |message| %>
+    <tr>
+      <td class = 'mensagem'><%= auto_link(message.text) %></td>
+      <td><%= link_to 'Delete', message, method: :delete %>
+    </tr>
+  <% end %>
+</table>
